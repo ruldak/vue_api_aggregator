@@ -1,0 +1,18 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.response-area {
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.nav-tabs .nav-link {
+    cursor: pointer;
+}
