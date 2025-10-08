@@ -384,10 +384,25 @@ const callApi = async (endpointKey) => {
                 </div>
             </div>
         </div>
+        <footer>
+            <p>Made with ❤️ by <a href="https://github.com/ruldak" target="_blank">Hari Cahyono</a> - <a href="https://github.com/ruldak/vue_api_aggregator" target="_blank">See the repository</a></p>
+        </footer>
     </div>
 </template>
 
 <style scoped>
+@media (max-width: 768px) {
+    footer > p {
+        font-size: .8rem;
+        width: 300px;
+    }
+}
+
+footer {
+  width: fit-content;
+  margin: 0 auto 30px auto;
+}
+
 .response-area {
     background-color: black;
     border: 1px solid #dee2e6;
