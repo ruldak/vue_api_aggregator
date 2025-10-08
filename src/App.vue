@@ -90,7 +90,6 @@ const createApiKey = async () => {
     const data = await handleRequest(() => api.post('/create-api-key/', {}, {
         headers: { 'Authorization': `Bearer ${token}` }
     }));
-    console.log(data)
     if (data && data.api_key) {
         apiKey.value = data.api_key;
         apiKeyMessage.value = data.message
@@ -209,13 +208,15 @@ const callApi = async (endpointKey) => {
                             {{ isLoggingIn ? 'Logging in...' : 'Login' }}
                         </button>
                     </form>
-                    <p v-if="authError" class="alert alert-danger mt-3">{{authError}}</p>
-                    <p v-else-if="authResponse"></p>
                 </div>
 
                 <div v-if="authResponse" class="mt-3 alert alert-info">
                     {{ authResponse }}
                 </div>
+                <div v-else-if="authError" class="mt-3 alert alert-danger">
+                    {{authError}}
+                </div>
+                <div v-else> </div>
             </div>
         </div>
 
