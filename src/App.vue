@@ -188,7 +188,6 @@ const callApi = async (endpointKey) => {
                             {{ isRegistering ? 'Registering...' : 'Register' }}
                         </button>
                     </form>
-                    <p v-if="authError" class="alert alert-danger mt-3">{{authError}}</p>
                 </div>
 
                 <!-- Login Form -->
