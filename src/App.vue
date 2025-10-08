@@ -210,6 +210,7 @@ const callApi = async (endpointKey) => {
                         </button>
                     </form>
                     <p v-if="authError" class="alert alert-danger mt-3">{{authError}}</p>
+                    <p v-else-if="authResponse"></p>
                 </div>
 
                 <div v-if="authResponse" class="mt-3 alert alert-info">
@@ -231,17 +232,17 @@ const callApi = async (endpointKey) => {
         </div>
 
         <div v-if="apiKey" class="alert alert-success">
-            <p class="mb-0"><strong>API Key Loaded.</strong> You can now use the endpoints below.</p>
-            <p class="mb-0">Your Api key is <strong>{{apiKey}}</strong>, {{apiKeyMessage}}</p>
-            <p class="mb-0">Now, you can make a request to the API <strong>"https://apiaggregator.pythonanywhere.com/  "</strong> by including this API key in the header, for example: <strong>"Authorization: Api-Key {{apiKey}}"</strong>. <a href="https://github.com/ruldak/django_api_aggregator/blob/master/README.md#api-services">See the endpoints here.</a></p>
-            <p class="mb-0">To test this API, you can use curl, HTTPie, postman, or whatever tool you like.</p>
+            <p class="mb-0 text-break"><strong>API Key Loaded.</strong> You can now use the endpoints below.</p>
+            <p class="mb-0 text-break">Your Api key is <strong>{{apiKey}}</strong>, {{apiKeyMessage}}</p>
+            <p class="mb-0 text-break">Now, you can make a request to the API <strong>"https://apiaggregator.pythonanywhere.com/  "</strong> by including this API key in the header, for example: <strong>"Authorization: Api-Key {{apiKey}}"</strong>. <a href="https://github.com/ruldak/django_api_aggregator/blob/master/README.md#api-services">See the endpoints here.</a></p>
+            <p class="mb-0 text-break">To test this API, you can use curl, HTTPie, postman, or whatever tool you like.</p>
             <button class="btn btn-sm btn-danger mt-2" @click="logout">Logout & Clear Key</button>
         </div>
 
         <!-- API Endpoints Section -->
         <div v-if="apiKey">
             <div class="card">
-                <div class="card-header">API Endpoints</div>
+                <div class="card-header">API Endpoints <strong>(The response will be displayed at the bottom.)</strong></div>
                 <div class="card-body">
                     <div class="row gy-4">
                         <!-- Weather -->
@@ -374,8 +375,9 @@ const callApi = async (endpointKey) => {
                     </div>
 
                     <!-- API Response Area -->
-                    <div v-if="apiResponse || error" class="mt-4">
+                    <div class="mt-4">
                         <h5>API Response:</h5>
+                        <pre v-if="!apiResponse" class="response-area">The response will be displayed here</pre>
                         <pre v-if="apiResponse" class="response-area">{{ apiResponse }}</pre>
                         <pre v-if="error" class="response-area" style="color: #e06c75;">{{ error }}</pre>
                     </div>
